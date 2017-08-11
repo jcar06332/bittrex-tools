@@ -1,3 +1,4 @@
+#https://github.com/ericsomdahl/python-bittrex/blob/master/bittrex/bittrex.py
 from bittrex import bittrex
 import pandas as pd
 
@@ -28,12 +29,12 @@ def buy_sell_to_df(term,args=None):
     else:
         df = pd.DataFrame(term(*args),index=[0])
     return df
-buy = lambda market,quan,rate: buy_sell_to_df(btx.buy_limit,({'market':market,
-                                                            'quantity':quan,
-                                                            'rate':rate}))
-sell = lambda market,quan,rate: buy_sell_to_df(btx.sell_limit,({'market':market,
-                                                            'quantity':quan,
-                                                            'rate':rate}))
+buy = lambda market,rate,quan: buy_sell_to_df(btx.buy_limit,({'market':market,
+                                                            'rate':rate,
+                                                            'quantity':quan}))
+sell = lambda market,rate,quan: buy_sell_to_df(btx.sell_limit,({'market':market,
+                                                            'rate':rate,
+                                                            'quantity':quan}))
 
 #usage
 get_balance()
